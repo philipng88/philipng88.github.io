@@ -14,16 +14,16 @@ Get_Country_Information () {
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].nativeName" 
 	echo 
 	echo Historical Background:
-	curl -s ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.introduction.background"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.introduction.background"
 	echo 
 	echo Location:
-	curl -s ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.geography.location" 
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.geography.location" 
 	echo 
 	echo Population:
-	curl -s ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.people.population.total"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.people.population.total"
 	echo 
 	echo Population Distribution:
-	curl -s ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.geography.population_distribution"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.geography.population_distribution"
 	echo 
 	echo Capital:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].capital"
@@ -60,6 +60,7 @@ Currency_Converter () {
 	echo 
 	read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT 
 	TARGETRATE=$(curl -s https://api.exchangeratesapi.io/latest?base=${CONVERSIONFROM^^} | jq ".rates.${CONVERSIONTO^^}")
+	# CONVERTEDAMOUNT=$(echo "$CONVERSIONFROMAMOUNT * $TARGETRATE" | bc)
 	CONVERTEDAMOUNT=$(awk "BEGIN {printf \"%.9f\n\", $CONVERSIONFROMAMOUNT * $TARGETRATE}") 
 	echo =================================
 	echo "$CONVERSIONFROMAMOUNT ${CONVERSIONFROM^^} equals $CONVERTEDAMOUNT ${CONVERSIONTO^^}"
