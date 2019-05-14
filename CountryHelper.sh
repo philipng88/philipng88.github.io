@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# Install required packages for Mac users
+if [[ "$OSTYPE" == "darwin"* ]]; then 
+	which jq > /dev/null 2>&1
+	if [ $? == 0 ]; then
+		echo "jq package found"
+	else 
+		which brew > /dev/null 2>&1
+		if [ $? == 0 ]; then 
+			"homebrew found"
+			brew update 
+			brew install jq 
+		else 
+			/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+			brew install jq
+		fi 
+	fi 
+fi  
+
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
 
