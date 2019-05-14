@@ -8,32 +8,32 @@ Get_Country_Information () {
 	OUT="${COUNTRY// /%20}"
 	OUT2="${COUNTRY// /_}"
 
-	if [ "$COUNTRY" == "Czech Republic" ]
+	if [[ "$COUNTRY" == "Czech Republic" ]] || [[ "$COUNTRY" == "czech republic" ]]
 	then 
 		OUT2="czechia" 
-	elif [ "$COUNTRY" == "South Korea" ] 
+	elif [[ "$COUNTRY" == "South Korea" ]] || [[ "$COUNTRY" == "south korea" ]]
 	then 
-		OUT="Korea (Republic of)" 
+		OUT="Korea%20(Republic%20of)" 
 		OUT2="korea_south"
-	elif [ "$COUNTRY" == "North Korea" ]
+	elif [[ "$COUNTRY" == "North Korea" ]] || [[ "$COUNTRY" == "north korea" ]]
 	then 
-		OUT="Korea (Democratic People's Republic of)"
+		OUT="Korea%20(Democratic%20People's%20Republic%20of)"
 		OUT2="korea_north" 
 	fi 
 	echo Native name:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].nativeName" 
 	echo 
 	echo Historical Background:
-	curl -# -m 15 ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.introduction.background"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.introduction.background"
 	echo 
 	echo Location:
-	curl -# -m 15 ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.geography.location" 
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.geography.location" 
 	echo 
 	echo Population:
-	curl -# -m 15 ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.people.population.total"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.people.population.total"
 	echo 
 	echo Population Distribution:
-	curl -# -m 15 ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2}.data.geography.population_distribution"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.geography.population_distribution"
 	echo 
 	echo Capital:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].capital"
@@ -43,9 +43,8 @@ Get_Country_Information () {
 	echo 
 	echo Currency:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].currencies[].name" 
-	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].currencies[].code" 
-	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].currencies[].symbol" 
 	echo 
+	#TODO: Add flag description 
 	echo 'Timezone(s):'
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].timezones[]"
 	echo 
@@ -55,104 +54,60 @@ Currency_Converter () {
 	echo =============================================================================================
 	echo -e "Bulgarian Lev(BGN)\tNew Zealand Dollar(NZD)\tIsraeli Shekel(ILS)\tRussian Ruble(RUB)\tCanadian Dollar(CAD)\tUnited States Dollar(USD)\nPhilippine Peso(PHP)\tSwiss Franc(CHF)\tSouth African Rand(ZAR)\tAustralian Dollar(AUD)\tJapanese Yen(JPY)\tTurkish Lira(TRY)\nHong Kong Dollar(HKD)\tMalaysian Ringgit(MYR)\tThai Baht(THB)\t\tCroatian Kuna(HRK)\tNorwegian Krone(NOK)\tIndonesian Rupiah(IDR)\nDanish Krone(DKK)\tCzech Koruna(CZK)\tHungarian Forint(HUF)\tBritish Pound(GBP)\tMexican Peso(MXN)\tSouth Korean Won(KRW)\nIcelandic Krona(ISK)\tSingapore Dollar(SGD)\tBrazilian Real(BRL)\tPolish Zloty(PLN)\tIndian Rupee(INR)\tRomanian Leu(RON)\nChinese Yuan(CNY)\tSwedish Krona(SEK)\tEuro(EUR)"
 	echo =============================================================================================
+	CURRENCIES=(BGN NZD ILS RUB CAD USD PHP CHF ZAR AUD JPY TRY HKD MYR THB HRK NOK IDR DKK CZK HUF GBP MXN KRW ISK SGD BRL PLN INR RON CNY SEK EUR \n 
+	            bgn nzd ils rub cad usd php chf zar aud jpy try hkd myr thb hrk nok idr dkk czk huf gbp mxn krw isk sgd brl pln inr ron cny sek eur) 
 	read -p "Enter currency you are converting from: " CONVERSIONFROM
-	while 
-		   [[ $CONVERSIONFROM != 'EUR' ]] && [[ $CONVERSIONFROM != 'eur' ]] \
-		&& [[ $CONVERSIONFROM != 'BGN' ]] && [[ $CONVERSIONFROM != 'bgn' ]] \
-		&& [[ $CONVERSIONFROM != 'NZD' ]] && [[ $CONVERSIONFROM != 'nzd' ]] \
-		&& [[ $CONVERSIONFROM != 'ILS' ]] && [[ $CONVERSIONFROM != 'ils' ]] \
-		&& [[ $CONVERSIONFROM != 'RUB' ]] && [[ $CONVERSIONFROM != 'rub' ]] \
-		&& [[ $CONVERSIONFROM != 'CAD' ]] && [[ $CONVERSIONFROM != 'cad' ]] \
-		&& [[ $CONVERSIONFROM != 'USD' ]] && [[ $CONVERSIONFROM != 'usd' ]] \
-		&& [[ $CONVERSIONFROM != 'PHP' ]] && [[ $CONVERSIONFROM != 'php' ]] \
-		&& [[ $CONVERSIONFROM != 'CHF' ]] && [[ $CONVERSIONFROM != 'chf' ]] \
-		&& [[ $CONVERSIONFROM != 'ZAR' ]] && [[ $CONVERSIONFROM != 'zar' ]] \
-		&& [[ $CONVERSIONFROM != 'AUD' ]] && [[ $CONVERSIONFROM != 'aud' ]] \
-		&& [[ $CONVERSIONFROM != 'JPY' ]] && [[ $CONVERSIONFROM != 'jpy' ]] \
-		&& [[ $CONVERSIONFROM != 'TRY' ]] && [[ $CONVERSIONFROM != 'try' ]] \
-		&& [[ $CONVERSIONFROM != 'HKD' ]] && [[ $CONVERSIONFROM != 'hkd' ]] \
-		&& [[ $CONVERSIONFROM != 'MYR' ]] && [[ $CONVERSIONFROM != 'myr' ]] \
-		&& [[ $CONVERSIONFROM != 'THB' ]] && [[ $CONVERSIONFROM != 'thb' ]] \
-		&& [[ $CONVERSIONFROM != 'HRK' ]] && [[ $CONVERSIONFROM != 'hrk' ]] \
-		&& [[ $CONVERSIONFROM != 'NOK' ]] && [[ $CONVERSIONFROM != 'nok' ]] \
-		&& [[ $CONVERSIONFROM != 'IDR' ]] && [[ $CONVERSIONFROM != 'idr' ]] \
-		&& [[ $CONVERSIONFROM != 'DKK' ]] && [[ $CONVERSIONFROM != 'dkk' ]] \
-		&& [[ $CONVERSIONFROM != 'CZK' ]] && [[ $CONVERSIONFROM != 'czk' ]] \
-		&& [[ $CONVERSIONFROM != 'HUF' ]] && [[ $CONVERSIONFROM != 'huf' ]] \
-		&& [[ $CONVERSIONFROM != 'GBP' ]] && [[ $CONVERSIONFROM != 'gbp' ]] \
-		&& [[ $CONVERSIONFROM != 'MXN' ]] && [[ $CONVERSIONFROM != 'mxn' ]] \
-		&& [[ $CONVERSIONFROM != 'KRW' ]] && [[ $CONVERSIONFROM != 'krw' ]] \
-		&& [[ $CONVERSIONFROM != 'ISK' ]] && [[ $CONVERSIONFROM != 'isk' ]] \
-		&& [[ $CONVERSIONFROM != 'SGD' ]] && [[ $CONVERSIONFROM != 'sgd' ]] \
-		&& [[ $CONVERSIONFROM != 'BRL' ]] && [[ $CONVERSIONFROM != 'brl' ]] \
-		&& [[ $CONVERSIONFROM != 'PLN' ]] && [[ $CONVERSIONFROM != 'pln' ]] \
-		&& [[ $CONVERSIONFROM != 'INR' ]] && [[ $CONVERSIONFROM != 'inr' ]] \
-		&& [[ $CONVERSIONFROM != 'RON' ]] && [[ $CONVERSIONFROM != 'ron' ]] \
-		&& [[ $CONVERSIONFROM != 'CNY' ]] && [[ $CONVERSIONFROM != 'cny' ]] \
-		&& [[ $CONVERSIONFROM != 'SEK' ]] && [[ $CONVERSIONFROM != 'sek' ]]  
-	
-	do 
-		echo "ERROR: Please enter a valid option"
-		echo 
-		read -p "Enter currency you are converting from: " CONVERSIONFROM 
-	done 
-	echo 
-	read -p "Enter currency you are converting to: " CONVERSIONTO
-	while 
-		   [[ $CONVERSIONTO != 'EUR' ]] && [[ $CONVERSIONTO != 'eur' ]] \
-		&& [[ $CONVERSIONTO != 'BGN' ]] && [[ $CONVERSIONTO != 'bgn' ]] \
-		&& [[ $CONVERSIONTO != 'NZD' ]] && [[ $CONVERSIONTO != 'nzd' ]] \
-		&& [[ $CONVERSIONTO != 'ILS' ]] && [[ $CONVERSIONTO != 'ils' ]] \
-		&& [[ $CONVERSIONTO != 'RUB' ]] && [[ $CONVERSIONTO != 'rub' ]] \
-		&& [[ $CONVERSIONTO != 'CAD' ]] && [[ $CONVERSIONTO != 'cad' ]] \
-		&& [[ $CONVERSIONTO != 'USD' ]] && [[ $CONVERSIONTO != 'usd' ]] \
-		&& [[ $CONVERSIONTO != 'PHP' ]] && [[ $CONVERSIONTO != 'php' ]] \
-		&& [[ $CONVERSIONTO != 'CHF' ]] && [[ $CONVERSIONTO != 'chf' ]] \
-		&& [[ $CONVERSIONTO != 'ZAR' ]] && [[ $CONVERSIONTO != 'zar' ]] \
-		&& [[ $CONVERSIONTO != 'AUD' ]] && [[ $CONVERSIONTO != 'aud' ]] \
-		&& [[ $CONVERSIONTO != 'JPY' ]] && [[ $CONVERSIONTO != 'jpy' ]] \
-		&& [[ $CONVERSIONTO != 'TRY' ]] && [[ $CONVERSIONTO != 'try' ]] \
-		&& [[ $CONVERSIONTO != 'HKD' ]] && [[ $CONVERSIONTO != 'hkd' ]] \
-		&& [[ $CONVERSIONTO != 'MYR' ]] && [[ $CONVERSIONTO != 'myr' ]] \
-		&& [[ $CONVERSIONTO != 'THB' ]] && [[ $CONVERSIONTO != 'thb' ]] \
-		&& [[ $CONVERSIONTO != 'HRK' ]] && [[ $CONVERSIONTO != 'hrk' ]] \
-		&& [[ $CONVERSIONTO != 'NOK' ]] && [[ $CONVERSIONTO != 'nok' ]] \
-		&& [[ $CONVERSIONTO != 'IDR' ]] && [[ $CONVERSIONTO != 'idr' ]] \
-		&& [[ $CONVERSIONTO != 'DKK' ]] && [[ $CONVERSIONTO != 'dkk' ]] \
-		&& [[ $CONVERSIONTO != 'CZK' ]] && [[ $CONVERSIONTO != 'czk' ]] \
-		&& [[ $CONVERSIONTO != 'HUF' ]] && [[ $CONVERSIONTO != 'huf' ]] \
-		&& [[ $CONVERSIONTO != 'GBP' ]] && [[ $CONVERSIONTO != 'gbp' ]] \
-		&& [[ $CONVERSIONTO != 'MXN' ]] && [[ $CONVERSIONTO != 'mxn' ]] \
-		&& [[ $CONVERSIONTO != 'KRW' ]] && [[ $CONVERSIONTO != 'krw' ]] \
-		&& [[ $CONVERSIONTO != 'ISK' ]] && [[ $CONVERSIONTO != 'isk' ]] \
-		&& [[ $CONVERSIONTO != 'SGD' ]] && [[ $CONVERSIONTO != 'sgd' ]] \
-		&& [[ $CONVERSIONTO != 'BRL' ]] && [[ $CONVERSIONTO != 'brl' ]] \
-		&& [[ $CONVERSIONTO != 'PLN' ]] && [[ $CONVERSIONTO != 'pln' ]] \
-		&& [[ $CONVERSIONTO != 'INR' ]] && [[ $CONVERSIONTO != 'inr' ]] \
-		&& [[ $CONVERSIONTO != 'RON' ]] && [[ $CONVERSIONTO != 'ron' ]] \
-		&& [[ $CONVERSIONTO != 'CNY' ]] && [[ $CONVERSIONTO != 'cny' ]] \
-		&& [[ $CONVERSIONTO != 'SEK' ]] && [[ $CONVERSIONTO != 'sek' ]]  
-		
+	i=0 
+	len=${#CURRENCIES[*]}
+	while [ $len -gt $i ]
 		do
-			echo "ERROR: Please enter a valid option"
-			echo 
-			read -p "Enter currency you are converting to: " CONVERSIONTO
+			if [ "${CURRENCIES[$i]}" == "$CONVERSIONFROM" ]
+				then 
+					read -p "Enter currency you are converting to: " CONVERSIONTO
+					j=0
+					len2=${#CURRENCIES[*]}
+					while [ $len2 -gt $j ]
+						do 
+							if [ "${CURRENCIES[$j]}" == "$CONVERSIONTO" ]
+								then 
+								read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT 
+								RE='^[0-9]+([.][0-9]+)?$'
+								while ! [[ $CONVERSIONFROMAMOUNT =~ $RE ]]
+									do 
+										echo "ERROR: Please enter a valid amount" 
+										echo 
+										read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT
+									done  
+								TARGETRATE=$(curl -s https://api.exchangeratesapi.io/latest?base=${CONVERSIONFROM^^} | jq ".rates.${CONVERSIONTO^^}")
+								CONVERTEDAMOUNT=$(echo "$CONVERSIONFROMAMOUNT * $TARGETRATE" | bc)
+								# CONVERTEDAMOUNT=$(awk "BEGIN {printf \"%.9 \", $CONVERSIONFROMAMOUNT * $TARGETRATE}")
+								echo =================================
+								echo "$CONVERSIONFROMAMOUNT ${CONVERSIONFROM^^} equals $CONVERTEDAMOUNT ${CONVERSIONTO^^}"
+								echo 
+								break  
+								else 
+								j=$(( $j + 1 ))
+							fi 
+							
+							if [ $j -eq $(( $len2 )) ]
+								then
+								echo "ERROR: Please enter a valid option"
+								read -p "Enter currency you are converting to: " CONVERSIONTO 
+								j=0 
+							fi 
+						done
+				break  
+				else 
+				i=$(( $i + 1 ))
+			fi 
+			
+			if [ $i -eq $(( $len )) ]
+				then
+				echo "ERROR: Please enter a valid option"
+				read -p "Enter currency you are converting from: " CONVERSIONFROM 
+				i=0 
+			fi 
 		done 
-	echo 
-	read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT
-	RE='^[0-9]+([.][0-9]+)?$'
-	while ! [[ $CONVERSIONFROMAMOUNT =~ $RE ]]
-		do 
-			echo "ERROR: Please enter a valid amount" 
-			echo 
-			read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT
-		done  
-	TARGETRATE=$(curl -s https://api.exchangeratesapi.io/latest?base=${CONVERSIONFROM^^} | jq ".rates.${CONVERSIONTO^^}")
-	CONVERTEDAMOUNT=$(echo "$CONVERSIONFROMAMOUNT * $TARGETRATE" | bc)
-	# CONVERTEDAMOUNT=$(awk "BEGIN {printf \"%.9f\n\", $CONVERSIONFROMAMOUNT * $TARGETRATE}") 
-	echo =================================
-	echo "$CONVERSIONFROMAMOUNT ${CONVERSIONFROM^^} equals $CONVERTEDAMOUNT ${CONVERSIONTO^^}"
-	echo 
 }
 
 while true; do 
