@@ -35,6 +35,9 @@ Get_Country_Information () {
 	echo Population Distribution:
 	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.geography.population_distribution"
 	echo 
+	echo Flag Description:
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.government.flag_description.description" 
+	echo 
 	echo Capital:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].capital"
 	echo 
@@ -44,7 +47,6 @@ Get_Country_Information () {
 	echo Currency:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].currencies[].name" 
 	echo 
-	#TODO: Add flag description 
 	echo 'Timezone(s):'
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].timezones[]"
 	echo 
@@ -79,8 +81,8 @@ Currency_Converter () {
 										read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT
 									done  
 								TARGETRATE=$(curl -s https://api.exchangeratesapi.io/latest?base=${CONVERSIONFROM^^} | jq ".rates.${CONVERSIONTO^^}")
-								CONVERTEDAMOUNT=$(echo "$CONVERSIONFROMAMOUNT * $TARGETRATE" | bc)
-								# CONVERTEDAMOUNT=$(awk "BEGIN {printf \"%.9 \", $CONVERSIONFROMAMOUNT * $TARGETRATE}")
+								# CONVERTEDAMOUNT=$(echo "$CONVERSIONFROMAMOUNT * $TARGETRATE" | bc)
+								CONVERTEDAMOUNT=$(awk "BEGIN {printf \"%.9f\n\", $CONVERSIONFROMAMOUNT * $TARGETRATE}")
 								echo =================================
 								echo "$CONVERSIONFROMAMOUNT ${CONVERSIONFROM^^} equals $CONVERTEDAMOUNT ${CONVERSIONTO^^}"
 								echo 
