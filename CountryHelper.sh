@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo $BASH_VERSION 
+ 
 # Install required packages for Mac users
 if [[ "$OSTYPE" == "darwin"* ]]; then 
 	which jq > /dev/null 2>&1
@@ -18,6 +18,27 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	fi 
 	brew install bash 
 fi  
+
+if [ -e /etc/os-release ]
+then 
+	source /etc/os-release 
+	if [[ "$ID" =~ (debian|ubuntu) || "$ID_LIKE" =~ (debian|ubuntu) ]]
+	then 
+		echo "You are running debian or ubuntu"
+		sudo apt-get install jq 
+	 
+
+	elif [[ "$ID" =~ (centos|fedora) || "$ID_LIKE" =~ (centos|fedora) ]] 
+	then
+		echo "You are running fedora, centos or openSUSE"
+	elif [[ "$ID" =~ opensuse || "$ID_LIKE" =~ suse ]]
+	then 
+		echo "You are running openSUSE"
+	elif [[ "$ID" =~ arch || "$ID_LIKE" =~ archlinux ]]
+	then 
+		echo "You are running Arch" 
+	fi  
+fi 
 
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
@@ -76,9 +97,9 @@ Get_Country_Information () {
 }
 
 Currency_Converter () {
-	echo =============================================================================================
-	echo -e "Bulgarian Lev(BGN)\tNew Zealand Dollar(NZD)\tIsraeli Shekel(ILS)\tRussian Ruble(RUB)\tCanadian Dollar(CAD)\tUnited States Dollar(USD)\nPhilippine Peso(PHP)\tSwiss Franc(CHF)\tSouth African Rand(ZAR)\tAustralian Dollar(AUD)\tJapanese Yen(JPY)\tTurkish Lira(TRY)\nHong Kong Dollar(HKD)\tMalaysian Ringgit(MYR)\tThai Baht(THB)\t\tCroatian Kuna(HRK)\tNorwegian Krone(NOK)\tIndonesian Rupiah(IDR)\nDanish Krone(DKK)\tCzech Koruna(CZK)\tHungarian Forint(HUF)\tBritish Pound(GBP)\tMexican Peso(MXN)\tSouth Korean Won(KRW)\nIcelandic Krona(ISK)\tSingapore Dollar(SGD)\tBrazilian Real(BRL)\tPolish Zloty(PLN)\tIndian Rupee(INR)\tRomanian Leu(RON)\nChinese Yuan(CNY)\tSwedish Krona(SEK)\tEuro(EUR)"
-	echo =============================================================================================
+	echo =================================================================================================================
+	echo -e "Bulgarian Lev(BGN)\t\tNew Zealand Dollar(NZD)\t\tIsraeli Shekel(ILS)\t\tRussian Ruble(RUB)\nCanadian Dollar(CAD)\t\tUnited States Dollar(USD)\tPhilippine Peso(PHP)\t\tSwiss Franc(CHF)\nSouth African Rand(ZAR)\t\tAustralian Dollar(AUD)\t\tJapanese Yen(JPY)\t\tTurkish Lira(TRY)\nHong Kong Dollar(HKD)\t\tMalaysian Ringgit(MYR)\t\tThai Baht(THB)\t\t\tCroatian Kuna(HRK)\nNorwegian Krone(NOK)\t\tIndonesian Rupiah(IDR)\t\tDanish Krone(DKK)\t\tCzech Koruna(CZK)\nHungarian Forint(HUF)\t\tBritish Pound(GBP)\t\tMexican Peso(MXN)\t\tSouth Korean Won(KRW)\nIcelandic Krona(ISK)\t\tSingapore Dollar(SGD)\t\tBrazilian Real(BRL)\t\tPolish Zloty(PLN)\nIndian Rupee(INR)\t\tRomanian Leu(RON)\t\tChinese Yuan(CNY)\t\tSwedish Krona(SEK)\nEuro(EUR)"
+	echo =================================================================================================================
 	CURRENCIES=(BGN NZD ILS RUB CAD USD PHP CHF ZAR AUD JPY TRY HKD MYR THB HRK NOK IDR DKK CZK HUF GBP MXN KRW ISK SGD BRL PLN INR RON CNY SEK EUR \n 
 	            bgn nzd ils rub cad usd php chf zar aud jpy try hkd myr thb hrk nok idr dkk czk huf gbp mxn krw isk sgd brl pln inr ron cny sek eur) 
 	echo 
