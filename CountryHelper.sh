@@ -16,6 +16,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 			brew install jq
 		fi 
 	fi 
+	brew install bash 
 fi  
 
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
