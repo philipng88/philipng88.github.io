@@ -1,5 +1,5 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
+echo $BASH_VERSION 
 # Install required packages for Mac users
 if [[ "$OSTYPE" == "darwin"* ]]; then 
 	which jq > /dev/null 2>&1
@@ -8,7 +8,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	else 
 		which brew > /dev/null 2>&1
 		if [ $? == 0 ]; then 
-			"homebrew found"
+			echo "homebrew found"
 			brew update 
 			brew install jq 
 		else 
@@ -20,6 +20,9 @@ fi
 
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
+
+ERROR_COLOR='\033[0;31m'
+NO_COLOR='\033[0m'
 
 Get_Country_Information () {
 	read -p "Enter a country name: " COUNTRY 
@@ -38,6 +41,7 @@ Get_Country_Information () {
 		OUT="Korea%20(Democratic%20People's%20Republic%20of)"
 		OUT2="korea_north" 
 	fi 
+	echo 
 	echo Native name:
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].nativeName" 
 	echo 
@@ -76,6 +80,7 @@ Currency_Converter () {
 	echo =============================================================================================
 	CURRENCIES=(BGN NZD ILS RUB CAD USD PHP CHF ZAR AUD JPY TRY HKD MYR THB HRK NOK IDR DKK CZK HUF GBP MXN KRW ISK SGD BRL PLN INR RON CNY SEK EUR \n 
 	            bgn nzd ils rub cad usd php chf zar aud jpy try hkd myr thb hrk nok idr dkk czk huf gbp mxn krw isk sgd brl pln inr ron cny sek eur) 
+	echo 
 	read -p "Enter currency you are converting from: " CONVERSIONFROM
 	i=0 
 	len=${#CURRENCIES[*]}
@@ -83,6 +88,7 @@ Currency_Converter () {
 		do
 			if [ "${CURRENCIES[$i]}" == "$CONVERSIONFROM" ]
 				then 
+					echo 
 					read -p "Enter currency you are converting to: " CONVERSIONTO
 					j=0
 					len2=${#CURRENCIES[*]}
@@ -90,11 +96,12 @@ Currency_Converter () {
 						do 
 							if [ "${CURRENCIES[$j]}" == "$CONVERSIONTO" ]
 								then 
+								echo 
 								read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT 
-								RE='^[0-9]+([.][0-9]+)?$'
+								local RE='^[0-9]+([.][0-9]+)?$'
 								while ! [[ $CONVERSIONFROMAMOUNT =~ $RE ]]
 									do 
-										echo "ERROR: Please enter a valid amount" 
+										echo -e "${ERROR_COLOR}ERROR:${NO_COLOR} Please enter a valid amount (e.g., 500)" 
 										echo 
 										read -p "Enter amount to convert: " CONVERSIONFROMAMOUNT
 									done  
@@ -111,7 +118,8 @@ Currency_Converter () {
 							
 							if [ $j -eq $(( $len2 )) ]
 								then
-								echo "ERROR: Please enter a valid option"
+								echo -e "${ERROR_COLOR}ERROR:${NO_COLOR} You must enter a valid three-letter currency code (e.g., USD)"
+								echo 
 								read -p "Enter currency you are converting to: " CONVERSIONTO 
 								j=0 
 							fi 
@@ -123,7 +131,8 @@ Currency_Converter () {
 			
 			if [ $i -eq $(( $len )) ]
 				then
-				echo "ERROR: Please enter a valid option"
+				echo -e "${ERROR_COLOR}ERROR:${NO_COLOR} You must enter a valid three-letter currency code (e.g., USD)"
+				echo 
 				read -p "Enter currency you are converting from: " CONVERSIONFROM 
 				i=0 
 			fi 
@@ -148,12 +157,7 @@ while true; do
 			break 2
 			;;
 		*)
-			echo "ERROR: Please try again" >&2
+			echo -e "${ERROR_COLOR}ERROR:${NO_COLOR} Please try again" >&2
 		esac  
 	done
 done 
-
-# Required tools
-# jq(JSON processor)
-# bc 
-# curl 
