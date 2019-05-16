@@ -1,68 +1,8 @@
 #!/usr/bin/env bash
- 
-# Install required packages for Mac users
-if [[ "$OSTYPE" == "darwin"* ]]; then 
-	which jq > /dev/null 2>&1
-	if [ $? == 0 ]; then
-		echo "jq package found"
-	else 
-		which brew > /dev/null 2>&1
-		if [ $? == 0 ]; then 
-			echo "homebrew found"
-			brew update 
-			brew install jq 
-		else 
-			/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-			brew install jq
-		fi 
-	fi 
-	brew install bash 
-fi  
 
-# Install required packages for Linux users
-if [[ "$OSTYPE" == "linux-gnu" ]]; then 
-	if [ -e /etc/os-release ]
-	then 
-		source /etc/os-release 
-		if [[ "$ID" =~ (debian|ubuntu|solus) || "$ID_LIKE" =~ (debian|ubuntu) ]]
-		then 
-			echo "You are running "${ID}" or "${ID_LIKE}"" 
-			which jq > /dev/null 2>&1
-			if [ $? == 0 ]; then 
-				echo "jq package found"
-			else 
-				sudo apt-get install jq
-			fi  
-		 
-		elif [[ "$ID" =~ (centos|fedora) || "$ID_LIKE" =~ (rhel|fedora) ]] 
-		then
-			echo "You are running "${ID}" or "${ID_LIKE}""
-			which jq > /dev/null 2>&1
-			if [ $? == 0 ]; then 
-				echo "jq package found"
-			else
-				which dnf > /dev/null 2>&1
-				if [ $? == 0 ]; then 
-					sudo dnf install jq
-				else 
-					sudo yum install epel-release -y
-					sudo yum install dnf -y  
-					sudo dnf install jq 
-				fi 
-			fi 	
-		
-		elif [[ "$ID" =~ opensuse || "$ID_LIKE" =~ suse ]]
-		then 
-			echo "You are running "${ID}" or "${ID_LIKE}""
-			sudo zypper install jq 
-		
-		elif [[ "$ID" =~ (arch|gentoo) || "$ID_LIKE" =~ (archlinux|gentoo) ]]
-		then 
-			echo "You are running "${ID}" or "${ID_LIKE}"" 
-			sudo pacman -Sy jq 
-		fi  
-	fi 
-fi
+if [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "msys" ]]; then
+    echo "You are using Windows, please make sure that you have installed the required packages"
+fi 
 
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
