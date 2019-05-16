@@ -31,6 +31,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			if [ $? == 0 ]; then 
 				echo "jq package found"
 			else 
+				echo "Installing jq" 
 				sudo apt-get install jq
 			fi  
 		 
@@ -43,11 +44,23 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			else
 				which dnf > /dev/null 2>&1
 				if [ $? == 0 ]; then 
+					echo "Installing jq with dnf"
 					sudo dnf install jq
+					if [ $? != 0 ]; then 
+						echo "installing jq with yum"
+						sudo yum install jq
+					fi 
 				else 
+					echo "Installing epel-release with yum"
 					sudo yum install epel-release -y
+					echo "Installing dnf with yum"
 					sudo yum install dnf -y  
+					echo "Installing jq with dnf"
 					sudo dnf install jq 
+					if [ $? != 0 ]; then
+						echo "installing jq with yum" 
+						sudo yum install jq 
+					fi  
 				fi 
 			fi 	
 		
