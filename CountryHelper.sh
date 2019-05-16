@@ -8,15 +8,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	else 
 		which brew > /dev/null 2>&1
 		if [ $? == 0 ]; then 
-			echo "homebrew found"
-			brew update 
+			echo "Updating homebrew"
+			brew update
+			echo "Installing jq with homebrew" 
 			brew install jq 
 		else 
+			echo "Installing homebrew"
 			/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+			echo "Installing jq with homebrew"
 			brew install jq
 		fi 
 	fi 
-	brew install bash 
+	brew install bash
+	exec bash  
 fi  
 
 # Install required packages for Linux users
