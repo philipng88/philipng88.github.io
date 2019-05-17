@@ -1,28 +1,5 @@
 #!/usr/bin/env bash
  
-# Install required packages for Mac users
-if [[ "$OSTYPE" == "darwin"* ]]; then 
-	which jq > /dev/null 2>&1
-	if [ $? == 0 ]; then
-		echo "jq package found"
-	else 
-		which brew > /dev/null 2>&1
-		if [ $? == 0 ]; then 
-			echo "Updating homebrew"
-			brew update
-			echo "Installing jq with homebrew" 
-			brew install jq 
-		else 
-			echo "Installing homebrew"
-			/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-			echo "Installing jq with homebrew"
-			brew install jq
-		fi 
-	fi 
-	brew install bash
-	exec bash  
-fi  
-
 # Install required packages for Linux users
 if [[ "$OSTYPE" == "linux-gnu" ]]; then 
 	if [ -e /etc/os-release ]
