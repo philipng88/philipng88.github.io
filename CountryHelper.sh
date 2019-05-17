@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "darwin"* ||
 	fi 
 fi 
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then 
+if [[ "$OSTYPE" == "linux"* ]]; then 
 	if [ -e /etc/os-release ]
 	then 
 		source /etc/os-release 
@@ -22,8 +22,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			echo "You are running "${ID}" or "${ID_LIKE}"" 
 			which jq > /dev/null 2>&1
 			if [[ $? -eq 0 ]]; then 
-				echo "jq package found"
+				:
 			else 
+				echo "jq package not found"
 				echo "Installing jq" 
 				sudo apt-get install jq
 			fi  
@@ -33,7 +34,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			echo "You are running "${ID}" or "${ID_LIKE}""
 			which jq > /dev/null 2>&1
 			if [[ $? -eq 0 ]]; then 
-				echo "jq package found"
+				:
 			else
 				which dnf > /dev/null 2>&1
 				if [[ $? -eq 0 ]]; then 
@@ -57,7 +58,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				fi 
 			fi 	
 		
-		elif [[ "$ID" =~ opensuse || "$ID_LIKE" =~ suse ]]
+		elif [[ "$ID" =~ "opensuse"* || "$ID_LIKE" =~ "suse"* ]]
 		then 
 			echo "You are running "${ID}" or "${ID_LIKE}""
 			sudo zypper install jq 
@@ -81,14 +82,14 @@ Get_Country_Information () {
 	OUT="${COUNTRY// /%20}"
 	OUT2="${COUNTRY// /_}"
 
-	if [[ "$COUNTRY" == "Czech Republic" ]] || [[ "$COUNTRY" == "czech republic" ]]
+	if [[ "${COUNTRY,,}" == "czech republic" ]]
 	then 
 		OUT2="czechia" 
-	elif [[ "$COUNTRY" == "South Korea" ]] || [[ "$COUNTRY" == "south korea" ]]
+	elif [[ "${COUNTRY,,}" == "south korea" ]] 
 	then 
 		OUT="Korea%20(Republic%20of)" 
 		OUT2="korea_south"
-	elif [[ "$COUNTRY" == "North Korea" ]] || [[ "$COUNTRY" == "north korea" ]]
+	elif [[ "${COUNTRY,,}" == "north korea" ]] 
 	then 
 		OUT="Korea%20(Democratic%20People's%20Republic%20of)"
 		OUT2="korea_north" 
