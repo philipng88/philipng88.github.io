@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
- 
-# Install required packages for Linux users
+
+if [[ "$OSTYPE" == "darwin"* ||
+"$OSTYPE" == "cygwin" ||
+"$OSTYPE" == "msys" ||
+"$OSTYPE" == "win32" ]]; then 
+	which jq > /dev/null 2>&1
+	if [ $? == 0 ]; then 
+		echo "jq package found"
+	else 
+		echo "jq package not found: please install"
+		exit 1 
+	fi 
+fi 
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then 
 	if [ -e /etc/os-release ]
 	then 
@@ -9,7 +21,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		then 
 			echo "You are running "${ID}" or "${ID_LIKE}"" 
 			which jq > /dev/null 2>&1
-			if [ $? == 0 ]; then 
+			if [[ $? -eq 0 ]]; then 
 				echo "jq package found"
 			else 
 				echo "Installing jq" 
@@ -20,14 +32,14 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		then
 			echo "You are running "${ID}" or "${ID_LIKE}""
 			which jq > /dev/null 2>&1
-			if [ $? == 0 ]; then 
+			if [[ $? -eq 0 ]]; then 
 				echo "jq package found"
 			else
 				which dnf > /dev/null 2>&1
-				if [ $? == 0 ]; then 
+				if [[ $? -eq 0 ]]; then 
 					echo "Installing jq with dnf"
 					sudo dnf install jq
-					if [ $? != 0 ]; then 
+					if [[ $? -ne 0 ]]; then 
 						echo "installing jq with yum"
 						sudo yum install jq
 					fi 
@@ -38,7 +50,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 					sudo yum install dnf -y  
 					echo "Installing jq with dnf"
 					sudo dnf install jq 
-					if [ $? != 0 ]; then
+					if [[ $? -ne 0 ]]; then
 						echo "installing jq with yum" 
 						sudo yum install jq 
 					fi  
