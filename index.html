@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <title>Country Helper</title> 
 </head>
 <body>
-    <h1>Title</h1>
+    <h1>Welcome to Country Helper!</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure veritatis itaque voluptatibus ipsa, dolores obcaecati quam, eos ratione tenetur accusamus, aliquam aperiam quos quibusdam? Temporibus minus similique veritatis culpa ipsa.</p>
     <div>    
         <a class="btn btn-primary" aria-pressed="true" href="/CountryHelper.sh" role="button" download>Download
@@ -37,7 +35,15 @@
         <a href="https://git-scm.com/downloads">Git Download</a> 
     </div>
     <div>
-        <h2>Usage:</h2>
+        <h2>macOS Usage:</h2>
+        <ol>
+            <li>Install the Homebrew package manager by pasting the following command into the terminal: <code class="selectable">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code>  (If you already have Homebrew installed, you may skip to step 2).
+            </li>
+            <li>Install the jq command-line processor using <code class="selectable">brew install jq</code></li>
+            <li>To be able to run the Country Helper script, you will need to upgrade your bash shell.</li>
+        </ol>
+        
+        <h2>Linux Usage:</h2>
         <ul style="list-style-position: inside; padding-left: 0">
             <li>Open the terminal</li> 
             <li>Navigate to the directory/folder where the CountryHelper.sh file is located</li>

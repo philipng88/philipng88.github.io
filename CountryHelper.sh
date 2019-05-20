@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
 
-if [[ "$OSTYPE" == "darwin"* ||
-"$OSTYPE" == "cygwin" ||
-"$OSTYPE" == "msys" ||
-"$OSTYPE" == "win32" ]]; then 
+if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then 
 	which jq > /dev/null 2>&1
-	if [ $? == 0 ]; then 
-		echo "jq package found"
-	else 
+	if [[ $? -ne 0 ]]; then 
 		echo "jq package not found: please install"
 		exit 1 
 	fi 
-fi 
-
-if [[ "$OSTYPE" == "linux"* ]]; then 
+ 
+elif [[ "$OSTYPE" == "linux"* ]]; then 
 	if [ -e /etc/os-release ]
 	then 
 		source /etc/os-release 
@@ -21,9 +15,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 		then 
 			echo "You are running "${ID}" or "${ID_LIKE}"" 
 			which jq > /dev/null 2>&1
-			if [[ $? -eq 0 ]]; then 
-				:
-			else 
+			if [[ $? -ne 0 ]]; then 
 				echo "jq package not found"
 				echo "Installing jq" 
 				sudo apt-get install jq
@@ -33,9 +25,7 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 		then
 			echo "You are running "${ID}" or "${ID_LIKE}""
 			which jq > /dev/null 2>&1
-			if [[ $? -eq 0 ]]; then 
-				:
-			else
+			if [[ $? -ne 0 ]]; then 
 				which dnf > /dev/null 2>&1
 				if [[ $? -eq 0 ]]; then 
 					echo "Installing jq with dnf"
@@ -46,9 +36,9 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 					fi 
 				else 
 					echo "Installing epel-release with yum"
-					sudo yum install epel-release -y
+					sudo yum install epel-release 
 					echo "Installing dnf with yum"
-					sudo yum install dnf -y  
+					sudo yum install dnf   
 					echo "Installing jq with dnf"
 					sudo dnf install jq 
 					if [[ $? -ne 0 ]]; then
@@ -61,12 +51,20 @@ if [[ "$OSTYPE" == "linux"* ]]; then
 		elif [[ "$ID" =~ "opensuse"* || "$ID_LIKE" =~ "suse"* ]]
 		then 
 			echo "You are running "${ID}" or "${ID_LIKE}""
-			sudo zypper install jq 
+			which jq > /dev/null 2>&1
+			if [[ $? -ne 0 ]]; then 
+				echo "installing jq"
+				sudo zypper install jq 
+			fi 
 		
 		elif [[ "$ID" =~ (arch|gentoo) || "$ID_LIKE" =~ (archlinux|gentoo) ]]
 		then 
 			echo "You are running "${ID}" or "${ID_LIKE}"" 
-			sudo pacman -Sy jq 
+			which jq > /dev/null 2>&1
+			if [[ $? -ne 0 ]]; then 
+				echo "installing jq"
+				sudo pacman -Sy jq 
+			fi 
 		fi  
 	fi 
 fi
@@ -82,13 +80,25 @@ Get_Country_Information () {
 	OUT="${COUNTRY// /%20}"
 	OUT2="${COUNTRY// /_}"
 
-	if [[ "${COUNTRY,,}" == "czech republic" ]]
+	if [[ "${COUNTRY,,}" == "america" || "${COUNTRY,,}" == "usa" || "${COUNTRY,,}" == "united states" ]]
+	then 
+		OUT="United%20States%20Of%20America"
+		OUT2="united_states" 
+	
+	elif [[ "${COUNTRY,,}" == "england" || "${COUNTRY,,}" == "great britain" || "${COUNTRY,,}" == "uk" || "${COUNTRY,,}" == "united kingdom" ]]
+	then 
+		OUT="United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland"
+		OUT2="united_kingdom" 
+	
+	elif [[ "${COUNTRY,,}" == "czech republic" ]]
 	then 
 		OUT2="czechia" 
+	
 	elif [[ "${COUNTRY,,}" == "south korea" ]] 
 	then 
 		OUT="Korea%20(Republic%20of)" 
 		OUT2="korea_south"
+	
 	elif [[ "${COUNTRY,,}" == "north korea" ]] 
 	then 
 		OUT="Korea%20(Democratic%20People's%20Republic%20of)"
