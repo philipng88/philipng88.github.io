@@ -1,0 +1,9 @@
+.selectable {
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 0 3px;
+    -webkit-user-select: text; 
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
