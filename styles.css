@@ -41,7 +41,7 @@ a:visited {
     user-select: all;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .content-wrapper {
         display: none; 
     }
@@ -54,4 +54,4 @@ a:visited {
     .mobile-content {
         display: none; 
     }
-}
+} */
