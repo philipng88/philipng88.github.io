@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then 
+	echo "You are running "${OSTYPE}"" 
 	which jq > /dev/null 2>&1
 	if [[ $? -ne 0 ]]; then 
 		echo "jq package not found: please install"
@@ -72,6 +73,7 @@ fi
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
 
+CATEGORY_COLOR='\033[1;34m'
 ERROR_COLOR='\033[0;31m'
 NO_COLOR='\033[0m'
 
@@ -105,34 +107,37 @@ Get_Country_Information () {
 		OUT2="korea_north" 
 	fi 
 	echo 
-	echo Native name:
+	echo -e "${CATEGORY_COLOR}Native name:${NO_COLOR}"
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].nativeName" 
 	echo 
-	echo Historical Background:
+	echo -e "${CATEGORY_COLOR}Historical Background:${NO_COLOR}"
 	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.introduction.background"
 	echo 
-	echo Location:
+	echo -e "${CATEGORY_COLOR}Location:${NO_COLOR}"
 	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.geography.location" 
 	echo 
-	echo Population:
+	echo -e "${CATEGORY_COLOR}Population:${NO_COLOR}"
 	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.people.population.total"
 	echo 
-	echo Population Distribution:
+	echo -e "${CATEGORY_COLOR}Population Distribution:${NO_COLOR}"
 	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.geography.population_distribution"
 	echo 
-	echo Flag Description:
+	echo -e "${CATEGORY_COLOR}Economy:${NO_COLOR}"
+	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.economy.overview"
+	echo 
+	echo -e "${CATEGORY_COLOR}Flag Description:${NO_COLOR}"
 	curl -# ${CIAWORLDFACTBOOK} | jq -r ".countries.${OUT2,,}.data.government.flag_description.description" 
 	echo 
-	echo Capital:
+	echo -e "${CATEGORY_COLOR}Capital:${NO_COLOR}"
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].capital"
 	echo 
-	echo Languages: 
+	echo -e "${CATEGORY_COLOR}Languages:${NO_COLOR}" 
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].languages[].name"
 	echo 
-	echo Currency:
+	echo -e "${CATEGORY_COLOR}Currency:${NO_COLOR}"
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].currencies[].name" 
 	echo 
-	echo 'Timezone(s):'
+	echo -e "${CATEGORY_COLOR}Timezone(s):${NO_COLOR}"
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].timezones[]"
 	echo 
 }
