@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+CATEGORY_COLOR='\033[1;34m'
+INFO_COLOR='\033[0;32m'
+ERROR_COLOR='\033[0;31m'
+NO_COLOR='\033[0m'
+
 if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then 
 	echo "You are running "${OSTYPE}"" 
 	which jq > /dev/null 2>&1
@@ -18,7 +23,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
 				echo "jq package not found"
-				echo "Installing jq" 
+				echo -e "${INFO_COLOR}Installing jq${NO_COLOR}" 
 				sudo apt-get install jq
 			fi  
 		 
@@ -29,21 +34,21 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 			if [[ $? -ne 0 ]]; then 
 				which dnf > /dev/null 2>&1
 				if [[ $? -eq 0 ]]; then 
-					echo "Installing jq with dnf"
+					echo -e "${INFO_COLOR}Installing jq with dnf${NO_COLOR}"
 					sudo dnf install jq
 					if [[ $? -ne 0 ]]; then 
-						echo "installing jq with yum"
+						echo -e "${INFO_COLOR}installing jq with yum${NO_COLOR}"
 						sudo yum install jq
 					fi 
 				else 
-					echo "Installing epel-release with yum"
+					echo -e "${INFO_COLOR}Installing epel-release with yum${NO_COLOR}"
 					sudo yum install epel-release 
-					echo "Installing dnf with yum"
+					echo -e "${INFO_COLOR}Installing dnf with yum${NO_COLOR}"
 					sudo yum install dnf   
-					echo "Installing jq with dnf"
+					echo -e "${INFO_COLOR}Installing jq with dnf${NO_COLOR}"
 					sudo dnf install jq 
 					if [[ $? -ne 0 ]]; then
-						echo "installing jq with yum" 
+						echo -e "${INFO_COLOR}Installing jq with yum${NO_COLOR}" 
 						sudo yum install jq 
 					fi  
 				fi 
@@ -54,7 +59,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 			echo "You are running "${ID}" or "${ID_LIKE}""
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
-				echo "installing jq"
+				echo -e "${INFO_COLOR}Installing jq${NO_COLOR}"
 				sudo zypper install jq 
 			fi 
 		
@@ -63,7 +68,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 			echo "You are running "${ID}" or "${ID_LIKE}"" 
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
-				echo "installing jq"
+				echo -e "${INFO_COLOR}Installing jq${NO_COLOR}"
 				sudo pacman -Sy jq 
 			fi 
 		fi  
@@ -72,10 +77,6 @@ fi
 
 CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
-
-CATEGORY_COLOR='\033[1;34m'
-ERROR_COLOR='\033[0;31m'
-NO_COLOR='\033[0m'
 
 Get_Country_Information () {
 	read -p "Enter a country name: " COUNTRY 

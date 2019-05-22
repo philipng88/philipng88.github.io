@@ -41,6 +41,10 @@ body {
     align-items: center;
 }
 
+.image-text-download .text-download p {
+    font-size: 25px; 
+}
+
 .btn-xlarge {
     padding: 18px 28px;
     font-size: 22px; 
@@ -48,6 +52,14 @@ body {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
+}
+
+#download-btn {
+    padding-left: 5px;
+}
+
+#apple-logo, #windows-logo, #tux {
+    padding-right: 5px;
 }
 
 a:hover {
