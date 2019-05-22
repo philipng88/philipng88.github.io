@@ -21,149 +21,95 @@
                 <div id="progress-bar"></div>
             </div> 
         </div>
-        <!-- <nav class="navbar fixed-top navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Country Helper</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#mac-usage">macOS X</a>
-                    <a class="nav-item nav-link" href="#windows-usage">Windows</a>
-                    <a class="nav-item nav-link" href="#linux-usage">Linux</a>
+        <div class="main-content">
+            <h1>Welcome to Country Helper!</h1>
+            <div class="image-text-download">
+                <div class="image-wrapper">
+                    <img src="globe.jpg" alt="plane flying around a globe"> 
+                </div>
+                
+                <div class="text-download">
+                    <p>
+                        Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Diam volutpat commodo sed egestas egestas
+                        fringilla phasellus faucibus. Feugiat vivamus at augue eget arcu. Tincidunt vitae semper quis lectus nulla
+                        at volutpat diam. Ac placerat vestibulum lectus mauris ultrices eros in. Ullamcorper sit amet risus nullam
+                        eget felis eget nunc. Diam maecenas sed enim ut sem viverra. Nisl nisi scelerisque eu ultrices vitae auctor
+                        eu augue. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Leo integer malesuada nunc vel risus
+                        commodo viverra maecenas. Tortor at risus viverra adipiscing at in tellus integer feugiat. Orci porta non
+                        pulvinar neque. Risus feugiat in ante metus dictum at tempor commodo ullamcorper. Enim ut tellus elementum
+                        sagittis. Sed felis eget velit aliquet. Mauris pellentesque pulvinar pellentesque habitant morbi tristique.
+                        Porttitor leo a diam sollicitudin. Euismod elementum nisi quis eleifend quam adipiscing vitae proin.
+                        Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin.
+                    </p>
+                    <div>
+                        <a class="btn btn-primary btn-xlarge" aria-pressed="true" href="/CountryHelper.sh" role="button"
+                            download>Download
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav> -->
-        <h1>Welcome to Country Helper!</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Venenatis a condimentum vitae sapien pellentesque. Lorem sed risus ultricies tristique
-            nulla aliquet enim. Id ornare arcu odio ut sem nulla. Risus commodo viverra maecenas accumsan lacus vel
-            facilisis volutpat. Rhoncus dolor purus non enim. Pellentesque id nibh tortor id aliquet. Sit amet mattis
-            vulputate enim nulla. Amet consectetur adipiscing elit duis tristique sollicitudin nibh sit amet. Mi ipsum
-            faucibus vitae aliquet nec ullamcorper. Consequat semper viverra nam libero justo laoreet. In fermentum et
-            sollicitudin ac orci phasellus egestas tellus rutrum. In hendrerit gravida rutrum quisque non. Commodo odio
-            aenean sed adipiscing diam. Commodo elit at imperdiet dui accumsan sit amet. Elit ullamcorper dignissim cras
-            tincidunt. Sapien nec sagittis aliquam malesuada bibendum arcu. Rhoncus urna neque viverra justo nec
-            ultrices.
-        </p>
+            
+            <div>
+                <h2 id="mac-usage"><i class="fab fa-apple"></i>macOS Usage:</h2>
+                <ol>
+                    <li>Install the Homebrew package manager by pasting the following command into the terminal: <code
+                            class="selectable">/usr/bin/ruby -e "$(curl -fsSL
+                            https://raw.githubusercontent.com/Homebrew/install/master/install)"</code>
+                        <ul>
+                            <li>If you already have Homebrew installed, you may skip to step 2</li>
+                        </ul>
+                    </li>
+                    <li>Install the jq command-line processor using <code class="selectable">brew install jq</code></li>
+                    <li>To be able to run the Country Helper script, you will need to upgrade your bash shell. Do this by
+                        using <code class="selectable">brew install bash</code></li>
+                    <li>Close the terminal and open it again</li>
+                    <li>Navigate to the folder/directory where <i>CountryHelper.sh</i> is located</li>
+                    <li>Use <code class="selectable">chmod +x CountryHelper.sh</code> or <code class="selectable">chmod 755
+                            CountryHelper.sh</code> to ensure that the script has executable permissions</li>
+                    <li>Run the script with the command <code class="selectable">bash CountryHelper.sh</code></li>
+                    <li>If you run into problems using the script, you may need to take some additional actions with the new
+                        bash shell you installed in step 3. Please refer to the following article for instructions: <a
+                            href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba" target="_blank">Upgrading Bash on macOS</a></li>
+                </ol>
 
-        <p>
-            In nulla posuere sollicitudin aliquam ultrices sagittis orci a. Leo vel fringilla est ullamcorper eget nulla
-            facilisi etiam. Nunc sed velit dignissim sodales ut eu. Adipiscing commodo elit at imperdiet dui. Sed felis
-            eget velit aliquet sagittis. Sit amet venenatis urna cursus eget nunc scelerisque. Ipsum suspendisse
-            ultrices gravida dictum fusce ut placerat orci. Non arcu risus quis varius quam quisque id. Egestas maecenas
-            pharetra convallis posuere morbi leo urna molestie. Diam quam nulla porttitor massa id neque aliquam
-            vestibulum morbi. Nulla at volutpat diam ut venenatis tellus in. Iaculis eu non diam phasellus vestibulum
-            lorem sed risus ultricies.
-        </p>
+                <h2 id="windows-usage"><i class="fab fa-windows"></i>Windows Usage:</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Non pulvinar neque laoreet suspendisse interdum consectetur. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. Etiam non quam lacus suspendisse faucibus. Varius morbi enim nunc faucibus a pellentesque sit amet. Aliquet eget sit amet tellus. Scelerisque fermentum dui faucibus in ornare quam viverra. Lacinia at quis risus sed vulputate. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum. Sed id semper risus in hendrerit gravida rutrum quisque non. Pharetra pharetra massa massa ultricies mi. Volutpat commodo sed egestas egestas fringilla.
+                </p>
 
-        <p>
-            Tempus egestas sed sed risus pretium quam vulputate. Integer eget aliquet nibh praesent tristique magna sit
-            amet. Dictumst vestibulum rhoncus est pellentesque. Dignissim sodales ut eu sem. Ultrices vitae auctor eu
-            augue ut lectus arcu. Ante metus dictum at tempor commodo ullamcorper. Urna et pharetra pharetra massa massa
-            ultricies mi quis. Enim neque volutpat ac tincidunt vitae semper quis lectus. Vitae elementum curabitur
-            vitae nunc sed velit. Mattis pellentesque id nibh tortor id. Dictum non consectetur a erat nam at lectus
-            urna. Purus sit amet volutpat consequat mauris nunc congue nisi. Nulla pellentesque dignissim enim sit amet
-            venenatis urna cursus. Elementum nibh tellus molestie nunc non blandit massa enim. Viverra nibh cras
-            pulvinar mattis nunc sed blandit. Nunc lobortis mattis aliquam faucibus purus in.
-        </p>
+                <p>    
+                    Sed velit dignissim sodales ut eu sem integer vitae. A pellentesque sit amet porttitor. Augue mauris augue neque gravida. Elit duis tristique sollicitudin nibh sit amet commodo. Ultricies leo integer malesuada nunc vel risus. Sodales neque sodales ut etiam sit amet nisl. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Vitae turpis massa sed elementum. Purus sit amet volutpat consequat mauris nunc congue. Sed elementum tempus egestas sed sed risus pretium quam. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Id nibh tortor id aliquet. Pharetra convallis posuere morbi leo urna molestie at elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Non nisi est sit amet facilisis magna etiam. Habitant morbi tristique senectus et netus. Morbi non arcu risus quis varius quam quisque.
+                </p>
+                <h2 id="linux-usage"><i class="fab fa-linux"></i>Linux Usage:</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Non pulvinar neque laoreet suspendisse interdum consectetur. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. Etiam non quam lacus suspendisse faucibus. Varius morbi enim nunc faucibus a pellentesque sit amet. Aliquet eget sit amet tellus. Scelerisque fermentum dui faucibus in ornare quam viverra. Lacinia at quis risus sed vulputate. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum. Sed id semper risus in hendrerit gravida rutrum quisque non. Pharetra pharetra massa massa ultricies mi. Volutpat commodo sed egestas egestas fringilla.
+                </p>
+        
+                <p>    
+                    Sed velit dignissim sodales ut eu sem integer vitae. A pellentesque sit amet porttitor. Augue mauris augue neque gravida. Elit duis tristique sollicitudin nibh sit amet commodo. Ultricies leo integer malesuada nunc vel risus. Sodales neque sodales ut etiam sit amet nisl. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Vitae turpis massa sed elementum. Purus sit amet volutpat consequat mauris nunc congue. Sed elementum tempus egestas sed sed risus pretium quam. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Id nibh tortor id aliquet. Pharetra convallis posuere morbi leo urna molestie at elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Non nisi est sit amet facilisis magna etiam. Habitant morbi tristique senectus et netus. Morbi non arcu risus quis varius quam quisque.
+                </p>
+            </div>
 
-        <p>
-            Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Viverra ipsum nunc
-            aliquet bibendum enim facilisis gravida neque convallis. Consequat mauris nunc congue nisi vitae. At tellus
-            at urna condimentum mattis pellentesque id. Sem nulla pharetra diam sit amet nisl suscipit. Ultrices in
-            iaculis nunc sed augue lacus viverra vitae congue. Urna condimentum mattis pellentesque id nibh tortor.
-            Ultricies mi quis hendrerit dolor magna eget est. Praesent semper feugiat nibh sed pulvinar. Semper feugiat
-            nibh sed pulvinar. Vitae tortor condimentum lacinia quis. Vel elit scelerisque mauris pellentesque. Amet
-            aliquam id diam maecenas. Adipiscing diam donec adipiscing tristique risus nec feugiat. Nullam vehicula
-            ipsum a arcu cursus vitae. Nec ultrices dui sapien eget mi proin sed libero enim. Mauris commodo quis
-            imperdiet massa tincidunt nunc.
-        </p>
-
-        <p>
-            Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Diam volutpat commodo sed egestas egestas
-            fringilla phasellus faucibus. Feugiat vivamus at augue eget arcu. Tincidunt vitae semper quis lectus nulla
-            at volutpat diam. Ac placerat vestibulum lectus mauris ultrices eros in. Ullamcorper sit amet risus nullam
-            eget felis eget nunc. Diam maecenas sed enim ut sem viverra. Nisl nisi scelerisque eu ultrices vitae auctor
-            eu augue. Nunc vel risus commodo viverra maecenas accumsan lacus vel. Leo integer malesuada nunc vel risus
-            commodo viverra maecenas. Tortor at risus viverra adipiscing at in tellus integer feugiat. Orci porta non
-            pulvinar neque. Risus feugiat in ante metus dictum at tempor commodo ullamcorper. Enim ut tellus elementum
-            sagittis. Sed felis eget velit aliquet. Mauris pellentesque pulvinar pellentesque habitant morbi tristique.
-            Porttitor leo a diam sollicitudin. Euismod elementum nisi quis eleifend quam adipiscing vitae proin.
-            Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin.
-        </p>
-        <div class="image-wrapper">
-            <img src="globe.jpg" alt="plane flying around a globe">
-        </div>
-
-        <div>
-            <a class="btn btn-primary btn-lg" aria-pressed="true" href="/CountryHelper.sh" role="button"
-                download>Download
-                <i class="fas fa-download"></i>
-            </a>
-        </div>
-
-        <div>
-            <h2 id="mac-usage"><i class="fab fa-apple"></i>macOS Usage:</h2>
-            <ol>
-                <li>Install the Homebrew package manager by pasting the following command into the terminal: <code
-                        class="selectable">/usr/bin/ruby -e "$(curl -fsSL
-                        https://raw.githubusercontent.com/Homebrew/install/master/install)"</code>
-                    <ul>
-                        <li>If you already have Homebrew installed, you may skip to step 2</li>
-                    </ul>
-                </li>
-                <li>Install the jq command-line processor using <code class="selectable">brew install jq</code></li>
-                <li>To be able to run the Country Helper script, you will need to upgrade your bash shell. Do this by
-                    using <code class="selectable">brew install bash</code></li>
-                <li>Close the terminal and open it again</li>
-                <li>Navigate to the folder/directory where <i>CountryHelper.sh</i> is located</li>
-                <li>Use <code class="selectable">chmod +x CountryHelper.sh</code> or <code class="selectable">chmod 755
-                        CountryHelper.sh</code> to ensure that the script has executable permissions</li>
-                <li>Run the script with the command <code class="selectable">bash CountryHelper.sh</code></li>
-                <li>If you run into problems using the script, you may need to take some additional actions with the new
-                    bash shell you installed in step 3. Please refer to the following article for instructions: <a
-                        href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba">Upgrading Bash on macOS</a></li>
-            </ol>
-
-            <h2 id="windows-usage"><i class="fab fa-windows"></i>Windows Usage:</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Non pulvinar neque laoreet suspendisse interdum consectetur. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. Etiam non quam lacus suspendisse faucibus. Varius morbi enim nunc faucibus a pellentesque sit amet. Aliquet eget sit amet tellus. Scelerisque fermentum dui faucibus in ornare quam viverra. Lacinia at quis risus sed vulputate. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum. Sed id semper risus in hendrerit gravida rutrum quisque non. Pharetra pharetra massa massa ultricies mi. Volutpat commodo sed egestas egestas fringilla.
-            </p>
-
-            <p>    
-                Sed velit dignissim sodales ut eu sem integer vitae. A pellentesque sit amet porttitor. Augue mauris augue neque gravida. Elit duis tristique sollicitudin nibh sit amet commodo. Ultricies leo integer malesuada nunc vel risus. Sodales neque sodales ut etiam sit amet nisl. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Vitae turpis massa sed elementum. Purus sit amet volutpat consequat mauris nunc congue. Sed elementum tempus egestas sed sed risus pretium quam. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Id nibh tortor id aliquet. Pharetra convallis posuere morbi leo urna molestie at elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Non nisi est sit amet facilisis magna etiam. Habitant morbi tristique senectus et netus. Morbi non arcu risus quis varius quam quisque.
-            </p>
-            <h2 id="linux-usage"><i class="fab fa-linux"></i>Linux Usage:</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. Non pulvinar neque laoreet suspendisse interdum consectetur. Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam. Etiam non quam lacus suspendisse faucibus. Varius morbi enim nunc faucibus a pellentesque sit amet. Aliquet eget sit amet tellus. Scelerisque fermentum dui faucibus in ornare quam viverra. Lacinia at quis risus sed vulputate. Quam elementum pulvinar etiam non quam lacus suspendisse faucibus interdum. Sed id semper risus in hendrerit gravida rutrum quisque non. Pharetra pharetra massa massa ultricies mi. Volutpat commodo sed egestas egestas fringilla.
-            </p>
-    
-            <p>    
-                Sed velit dignissim sodales ut eu sem integer vitae. A pellentesque sit amet porttitor. Augue mauris augue neque gravida. Elit duis tristique sollicitudin nibh sit amet commodo. Ultricies leo integer malesuada nunc vel risus. Sodales neque sodales ut etiam sit amet nisl. Aliquet sagittis id consectetur purus ut faucibus pulvinar. Vitae turpis massa sed elementum. Purus sit amet volutpat consequat mauris nunc congue. Sed elementum tempus egestas sed sed risus pretium quam. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Id nibh tortor id aliquet. Pharetra convallis posuere morbi leo urna molestie at elementum. Feugiat pretium nibh ipsum consequat nisl vel pretium. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Non nisi est sit amet facilisis magna etiam. Habitant morbi tristique senectus et netus. Morbi non arcu risus quis varius quam quisque.
-            </p>
-        </div>
-
-        <div>
-            <h2>Sources:</h2>
-            <ul>
-                <li><a href="https://brew.sh" target="_blank">To install Homebrew</a></li>
-                <li><a href="https://stedolan.github.io/jq/download" target="_blank">To download jq command line JSON
-                        processor</a></li>
-                <li><a href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba" target="_blank">How to upgrade Bash
-                        Shell on macOS</a></li>
-                <li><a href="https://chocolatey.org/install" target="_blank">To install chocolatey package manager</a>
-                </li>
-                <li><a href="https://blog.jsecademy.com/how-to-install-git-bash-ssh-in-windows" target="_blank">Install
-                        Git Bash tutorial</a></li>
-                <li><a href="https://git-scm.com/downloads" target="_blank">Git Download</a></li>
-                <li><a href="https://iancoleman.io/exploring-the-cia-world-factbook" target="_blank">CIA world
-                        factbook</a></li>
-                <li><a href="https://exchangeratesapi.io" target="_blank">Foreign exchange rates API</a></li>
-                <li><a href="https://restcountries.eu" target="_blank">Rest Countries</a></li>
-            </ul>
+            <div>
+                <h2>Sources:</h2>
+                <ul>
+                    <li><a href="https://brew.sh" target="_blank">To install Homebrew</a></li>
+                    <li><a href="https://stedolan.github.io/jq/download" target="_blank">To download jq command line JSON
+                            processor</a></li>
+                    <li><a href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba" target="_blank">How to upgrade Bash
+                            Shell on macOS</a></li>
+                    <li><a href="https://chocolatey.org/install" target="_blank">To install chocolatey package manager</a>
+                    </li>
+                    <li><a href="https://blog.jsecademy.com/how-to-install-git-bash-ssh-in-windows" target="_blank">Install
+                            Git Bash tutorial</a></li>
+                    <li><a href="https://git-scm.com/downloads" target="_blank">Git Download</a></li>
+                    <li><a href="https://iancoleman.io/exploring-the-cia-world-factbook" target="_blank">CIA world
+                            factbook</a></li>
+                    <li><a href="https://exchangeratesapi.io" target="_blank">Foreign exchange rates API</a></li>
+                    <li><a href="https://restcountries.eu" target="_blank">Rest Countries</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="mobile-content">
@@ -172,16 +118,13 @@
                 increase your browser window size</h1>
         </div>
         <img src="tbot.png">
+        <div>
+            <a class="btn btn-primary btn-lg" aria-pressed="true" href="/CountryHelper.sh" role="button"
+                download>Download
+                <i class="fas fa-download"></i>
+            </a>
+        </div>
     </div>
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script> -->
     <script>
         window.onscroll = function() {myFunction()};
 

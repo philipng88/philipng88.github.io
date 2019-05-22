@@ -5,17 +5,6 @@ body {
     padding-top: 70px;
 }
 
-/* .navbar-nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar-nav a {
-    font-weight: bold;
-} */
-
 .header {
     position: fixed;
     top: 0;
@@ -23,6 +12,10 @@ body {
     width: 100%;
     background-color: #36454f;
     color: mintcream;
+}
+
+.content-wrapper .main-content {
+    margin: 20px;
 }
 
 .progress-container {
@@ -37,7 +30,31 @@ body {
     width: 0%;
 }
 
-a:visited {
+.image-text-download {
+    display: flex; 
+}
+
+.image-text-download .text-download {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px; 
+    line-height: normal;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+a:hover {
+    font-weight: bold; 
+}
+
+a, a:visited {
     color: green;
 }
 
