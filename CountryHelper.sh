@@ -5,8 +5,8 @@ INFO_COLOR='\033[0;32m'
 ERROR_COLOR='\033[0;31m'
 NO_COLOR='\033[0m'
 
-if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then 
-	echo "You are running "${OSTYPE}"" 
+if [[ "$OSTYPE" == "darwin"* || "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]] 
+	then  
 	which jq > /dev/null 2>&1
 	if [[ $? -ne 0 ]]; then 
 		echo "jq package not found: please install"
@@ -18,8 +18,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 	then 
 		source /etc/os-release 
 		if [[ "$ID" =~ (debian|ubuntu|solus) || "$ID_LIKE" =~ (debian|ubuntu) ]]
-		then 
-			echo "You are running "${ID}" or "${ID_LIKE}"" 
+		then  
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
 				echo "jq package not found"
@@ -29,7 +28,6 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 		 
 		elif [[ "$ID" =~ (centos|fedora) || "$ID_LIKE" =~ (rhel|fedora) ]] 
 		then
-			echo "You are running "${ID}" or "${ID_LIKE}""
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
 				which dnf > /dev/null 2>&1
@@ -56,7 +54,6 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 		
 		elif [[ "$ID" =~ "opensuse"* || "$ID_LIKE" =~ "suse"* ]]
 		then 
-			echo "You are running "${ID}" or "${ID_LIKE}""
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
 				echo -e "${INFO_COLOR}Installing jq${NO_COLOR}"
@@ -65,7 +62,6 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 		
 		elif [[ "$ID" =~ (arch|gentoo) || "$ID_LIKE" =~ (archlinux|gentoo) ]]
 		then 
-			echo "You are running "${ID}" or "${ID_LIKE}"" 
 			which jq > /dev/null 2>&1
 			if [[ $? -ne 0 ]]; then 
 				echo -e "${INFO_COLOR}Installing jq${NO_COLOR}"
@@ -83,30 +79,66 @@ Get_Country_Information () {
 	OUT="${COUNTRY// /%20}"
 	OUT2="${COUNTRY// /_}"
 
-	if [[ "${COUNTRY,,}" == "america" || "${COUNTRY,,}" == "usa" || "${COUNTRY,,}" == "united states" ]]
-	then 
-		OUT="United%20States%20Of%20America"
-		OUT2="united_states" 
+	# User input modification for alternative or common spellings
+	case "${COUNTRY,,}" in 
+		"america"|"usa"|"u.s.a."|"united states")
+			OUT="United%20States%20Of%20America"
+			OUT2="united_states"
+			;; 
+		"england"|"great britain"|"uk"|"u.k."|"united kingdom")
+			OUT="United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland"
+			OUT2="united_kingdom"
+			;;
+		"czech republic")
+			OUT2="czechia"
+			;;
+		"south korea")
+			OUT="Korea%20(Republic%20of)" 
+			OUT2="korea_south"
+			;;
+		"north korea")
+			OUT="Korea%20(Democratic%20People's%20Republic%20of)"
+			OUT2="korea_north"
+			;;
+		"bahamas"|"the bahamas")
+			OUT2="bahamas_the"
+			;;
+		"virgin islands")
+			echo -e "${ERROR_COLOR}ERROR:${NO_COLOR}Please specify either the 'British Virgin Islands' or the 'U.S. Virgin Islands'"
+			OUT=""
+			OUT2="" 
+			;; 
+		"british virgin islands")
+			OUT="Virgin%20Islands%20(British)"
+			OUT2="british_virgin_islands"
+			;;
+		"us virgin islands"|"u.s. virgin islands"|"united states virgin islands")
+			OUT="Virgin%20Islands%20(U.S.)"
+			OUT2="virgin_islands"
+			;;
+		"cape verde")
+			OUT="Cabo%20Verde"
+			OUT2="cabo_verde"
+			;;
+		"cocos keeling islands"|"cocos (keeling) islands"|"cocos islands")
+			OUT="Cocos%20(Keeling)%20Islands"
+			OUT2="cocos_keeling_islands"
+			;;
+		"congo"|"the congo")
+			echo -e "${ERROR_COLOR}ERROR:${NO_COLOR}Please specify either the 'Republic of the Congo' or the 'Democratic Republic of the Congo'"
+			OUT=""
+			OUT2=""
+			;;
+		"republic of the congo")
+			OUT="congo"
+			OUT2="congo_republic_of_the"
+			;;
+		"democratic republic of the congo")
+			OUT="congo%20(democratic%20republic%20of%20the)"
+			OUT2="congo_democratic_republic_of_the"
+			;;		
+	esac 
 	
-	elif [[ "${COUNTRY,,}" == "england" || "${COUNTRY,,}" == "great britain" || "${COUNTRY,,}" == "uk" || "${COUNTRY,,}" == "united kingdom" ]]
-	then 
-		OUT="United%20Kingdom%20of%20Great%20Britain%20and%20Northern%20Ireland"
-		OUT2="united_kingdom" 
-	
-	elif [[ "${COUNTRY,,}" == "czech republic" ]]
-	then 
-		OUT2="czechia" 
-	
-	elif [[ "${COUNTRY,,}" == "south korea" ]] 
-	then 
-		OUT="Korea%20(Republic%20of)" 
-		OUT2="korea_south"
-	
-	elif [[ "${COUNTRY,,}" == "north korea" ]] 
-	then 
-		OUT="Korea%20(Democratic%20People's%20Republic%20of)"
-		OUT2="korea_north" 
-	fi 
 	echo 
 	echo -e "${CATEGORY_COLOR}Native name:${NO_COLOR}"
 	curl -s ${RESTCOUNTRIES}/${OUT} | jq -r ".[0].nativeName" 
