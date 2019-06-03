@@ -79,7 +79,7 @@ a, a:visited {
     color: black;
     background-color: #eee;
     border-radius: 3px;
-    padding: 0 3px;
+    padding: 4px;
     font-weight: bold;
     -webkit-user-select: all;
     -moz-user-select: all;

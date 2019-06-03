@@ -71,8 +71,7 @@ elif [[ "$OSTYPE" == "linux"* ]]; then
 	fi 
 fi
 
-# CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
-CIAWORLDFACTBOOK=https://philipng88.github.io/CIAWorldFactbook.json
+CIAWORLDFACTBOOK=https://raw.githubusercontent.com/iancoleman/cia_world_factbook_api/master/data/factbook.json 
 RESTCOUNTRIES=https://restcountries.eu/rest/v2/name 
 
 Get_Country_Information () {
@@ -155,7 +154,7 @@ Get_Country_Information () {
 			;;
 		"cote d'ivoire"|"ivory coast")
 			OUT="cote%20d'ivoire"
-			OUT2="ivory_coast"
+			# OUT2=
 			;;
 	esac 
 	
