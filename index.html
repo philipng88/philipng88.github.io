@@ -40,81 +40,11 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="usage-wrapper">
-                <h2><i class="fab fa-apple" id="apple-logo"></i>macOS Usage:</h2>
-                <ol>
-                    <li>Install the Homebrew package manager by pasting the following command into the terminal: <br><code
-                            class="selectable">/usr/bin/ruby -e "$(curl -fsSL
-                            https://raw.githubusercontent.com/Homebrew/install/master/install)"</code>
-                        <ul>
-                            <li>If you already have Homebrew installed, you may skip to step 2</li>
-                        </ul>
-                    </li>
-                    <li>Install the jq command-line processor using <code class="selectable">brew install jq</code></li>
-                    <li>To be able to run the Country Helper script, you will need to upgrade your bash shell. Do this by
-                        using <code class="selectable">brew install bash</code></li>
-                    <li>Close the terminal and open it again</li>
-                    <li>Navigate to the folder/directory where <i>CountryHelper.sh</i> is located</li>
-                    <li>Use <code class="selectable">chmod +x CountryHelper.sh</code> or <code class="selectable">chmod 755
-                            CountryHelper.sh</code> to ensure that the script has executable permissions</li>
-                    <li>Run the script with the command <code class="selectable">bash CountryHelper.sh</code></li>
-                    <li>If you run into problems using the script, you may need to take some additional actions with the new
-                        bash shell you installed in step 3. Please refer to the following article for instructions: <a
-                            href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba" target="_blank">Upgrading Bash on macOS</a></li>
-                </ol>
-
-                <h2><i class="fab fa-windows" id="windows-logo"></i>Windows Usage:</h2>
-                <p>If you do not have the Bash shell installed on your Windows machine, you will need to install it in order to run the Country Helper script. There are a few ways to do this and I recommend installing either <b>Git Bash</b> or <b>Bash [on Ubuntu] on Windows</b></p>
-                <h4>Using with Git Bash</h4>
-                <ol>
-                    <li>Open the Command Prompt and run as an administrator. You can do this by right-clicking on the Windows start button (or pressing Windows+X) and selecting <i>Command Prompt (Admin)</i></li>
-                    <li>Install the <a href="https://chocolatey.org" target="_blank">Chocolatey Package Manager</a> with the following command: <code class="selectable">@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"</code> </li>
-                    <li>Exit the Command Prompt and open it (running as an administrator) again</li>
-                    <li>Install the jq command-line-processor with <code class="selectable">chocolatey install jq</code></li>
-                    <li>Read and follow through with the instructions in this <a href="https://learn.adafruit.com/an-introduction-to-collaborating-with-version-control/windows" target="_blank">article</a> to install Git Bash</li> 
-                    <li>Open Git Bash</li>
-                    <li>Navigate to the folder/directory where <i>CountryHelper.sh</i> is located</li>
-                    <li>Use <code class="selectable">chmod +x CountryHelper.sh</code> or <code class="selectable">chmod 755 CountryHelper.sh</code> to ensure that the script has executable permissions</li>
-                    <li>Run the script with the command <code class="selectable">bash CountryHelper.sh</code></li>
-                </ol>
-                <h4>Using with Bash on Windows</h4>
-                <ol>
-                    <li>Open the Command Prompt and run as an administrator. You can do this by right-clicking on the Windows start button (or pressing Windows+X) and selecting <i>Command Prompt (Admin)</i></li>
-                    <li>Install the <a href="https://chocolatey.org" target="_blank">Chocolatey Package Manager</a> with the following command: <code class="selectable">@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"</code> </li>
-                    <li>Exit the Command Prompt and open it (running as an administrator) again</li>
-                    <li>Install the jq command-line-processor with <code class="selectable">chocolatey install jq</code></li>
-                    <li>Exit the Command Prompt</li>
-                    <li>Read through and follow the instructions in this <a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/" target="_blank">article</a> (up until you have finished setting your UNIX username and password) 
-                    </li>
-                    <li>Run <code class="selectable">sudo apt update && sudo apt upgrade</code> This will take a while. Be patient!</li>
-                    <li>You can now exit out of Ubuntu if you would like. As you will see in the final steps, we can use bash commands in Command Prompt with <i>bash -c "command"</i> </li>
-                    <li>Open the Command Prompt (just normally this time)</li>
-                    <li>Navigate to the folder/directory where <i>CountryHelper.sh</i> is located</li>
-                    <li>Use <code class="selectable">bash -c "chmod +x CountryHelper.sh"</code> or <code class="selectable">bash -c "chmod 755
-                            CountryHelper.sh"</code> to ensure that the script has executable permissions</li>
-                    <li>Run the script with the command <code class="selectable">bash -c "bash CountryHelper.sh"</code></li>
-
-                </ol>
-                
-                <h2><i class="fab fa-linux" id="tux"></i>Linux Usage:</h2>
-                <p>
-                    <ol>
-                        <li>Open the terminal</li>
-                        <li>Navigate to the folder/directory where <i>CountryHelper.sh</i> is located</li>
-                        <li>Use <code class="selectable">chmod +x CountryHelper.sh</code> or <code class="selectable">chmod 755 CountryHelper.sh</code> to ensure that the script has executable permissions</li>
-                        <li>Run the script with the command <code class="selectable">bash CountryHelper.sh</code></li>
-                    </ol>
-                    <ul>
-                        <li>Note: The Country Helper script will detect your linux distribution and run the necessary command(s) to install the jq package manager [if not already installed]. However, if you prefer to install the jq package yourself, refer to the <a href="https://stedolan.github.io/jq" target="_blank">jq website</a>.</li>
-                    </ul>
-                </p>
-            </div>
 
             <div>
                 <h2>Sources:</h2>
                 <ul>
-                    <li><a href="https://brew.sh" target="_blank">To install Homebrew</a></li>
+                    <!-- <li><a href="https://brew.sh" target="_blank">To install Homebrew</a></li>
                     <li><a href="https://stedolan.github.io/jq/download" target="_blank">To download jq command line JSON
                             processor</a></li>
                     <li><a href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba" target="_blank">How to upgrade Bash
@@ -125,7 +55,7 @@
                             Git Bash tutorial</a></li>
                     <li><a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/" target="_blank">How to Install and Use the Linux Bash Shell on Windows 10</a></li>
                     <li><a href="https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/" target="_blank">How to run Command Prompt as admin</a></li> 
-                    <li><a href="https://git-scm.com/downloads" target="_blank">Git Download</a></li>
+                    <li><a href="https://git-scm.com/downloads" target="_blank">Git Download</a></li> -->
                     <li><a href="https://iancoleman.io/exploring-the-cia-world-factbook" target="_blank">CIA world
                             factbook</a></li>
                     <li><a href="https://exchangeratesapi.io" target="_blank">Foreign exchange rates API</a></li>
@@ -140,14 +70,8 @@
                 increase your browser window size</h1>
         </div>
         <img src="tbot.png">
-        <!-- <div>
-            <a class="btn btn-primary btn-lg" aria-pressed="true" href="/CountryHelper.sh" role="button"
-                download>Download
-                <i class="fas fa-download"></i>
-            </a>
-        </div> -->
     </div>
-    <script>
+    <!-- <script>
         window.onscroll = function() {myFunction()};
 
         function myFunction() {
@@ -156,7 +80,7 @@
             var scrolled = (winScroll / height) * 100;
             document.getElementById("progress-bar").style.width = scrolled + "%";
     }
-    </script>
+    </script> -->
 </body>
 
 </html>
