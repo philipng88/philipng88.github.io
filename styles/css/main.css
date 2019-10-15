@@ -10,9 +10,6 @@ body {
   background-color: #000;
   color: #fff;
   padding: 30px 5px; }
-  .footer a {
-    color: #fff;
-    text-decoration: none; }
 
 .navbar-toggler {
   border: none;
@@ -143,3 +140,30 @@ body {
         position: absolute;
         outline: none;
         right: -15px; }
+
+#about .profile-pic {
+  max-width: 100%; }
+#about p {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 17px; }
+
+#contact {
+  background-color: #2c3e50;
+  color: #fff; }
+  #contact .contactButton {
+    margin-left: .5rem;
+    font-size: 18px;
+    color: #fff;
+    padding: 15px 20px;
+    display: inline-block;
+    margin-top: 20px;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px; }
+    #contact .contactButton:hover {
+      text-decoration: none;
+      color: #2c3e50;
+      background-color: #fff; }
