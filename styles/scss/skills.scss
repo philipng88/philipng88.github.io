@@ -1,0 +1,33 @@
+@mixin carousel-buttons {
+    position: absolute;
+    outline: none;
+}
+
+.owl-carousel-wrapper {
+    background-color: #2c3e50; 
+    color: #fff;
+
+    .owl-carousel {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+        position: relative;
+
+        .owl-nav {
+            font-size: 50px;
+            position: absolute;
+            top: 35%;
+            width: 100%;
+
+            .owl-prev {
+                @include carousel-buttons();
+                left: -15px;
+            }
+
+            .owl-next {
+                @include carousel-buttons();
+                right: -15px;
+            }
+        }
+    }
+}

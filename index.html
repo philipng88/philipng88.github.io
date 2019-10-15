@@ -1,86 +1,197 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <title>Country Helper</title>
+    <link rel="stylesheet" href="vendors/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap">
+    <link rel="stylesheet" href="styles/css/main.min.css">
+    <title>Portfolio</title>
 </head>
-
 <body>
-    <div class="content-wrapper">
-        <div class="header">
-            <h2>Country Helper</h2>
-            <div class="progress-container">
-                <div id="progress-bar"></div>
-            </div> 
-        </div>
-        <div class="main-content">
-            <h1>Welcome to Country Helper!</h1>
-            <div class="image-text-download">
-                <div class="image-wrapper">
-                    <img src="globe.jpg" alt="plane flying around a globe"> 
+    <div id="slides">
+        <div class="overlay"></div>
+        <div id="carousel-nav" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/bg-slides/slide1.jpg" alt="background-slide-1" class="d-block w-100">
                 </div>
-                
-                <div class="text-download">
-                    <p>
-                        Country Helper is an interactive Bash (<b>B</b>ourne <b>A</b>gain <b>Sh</b>ell) script that allows you to retrieve information about any country in the world and perform calculations for currency conversion.  
-                    </p>
-                    <div>
-                        <a class="btn btn-primary btn-xlarge" aria-pressed="true" href="/CountryHelper.sh" role="button"
-                            download>Download
-                            <i class="fas fa-download" id="download-btn"></i>
-                        </a>
+                <div class="carousel-item">
+                    <img src="images/bg-slides/slide2.jpg" alt="background-slide-2" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/bg-slides/slide3.jpg" alt="background-slide-3" class="d-block w-100">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carousel-nav" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-nav" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="titleMessage">
+            <div class="heading">
+                <p class="main">Philip Ng</p>    
+                <p class="sub">Web Developer</p>
+            </div>
+        </div>
+
+        <nav class="slides-navigation">
+            <a href="#" class="next"></a>
+            <a href="#" class="prev"></a>
+        </nav>
+    </div>
+
+    <nav id="navigation" class="navbar navbar-expand-lg font-weight-bold w-100">
+        <a class="navbar-brand" href="#">Philip Ng</a>
+        
+        <button 
+            class="navbar-toggler collapsed" 
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#navbarNav" 
+            aria-controls="navbarNav" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation"
+        >
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="about" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <p class="lead"><span class="font-weight-bold">About me: </span>Mollit incididunt et magna aliquip et nisi in ut esse adipisicing. Nostrud commodo deserunt aute ad exercitation ea laboris nisi. Eiusmod ad pariatur dolor labore officia labore nostrud in tempor voluptate reprehenderit. Excepteur do exercitation ea aliquip nostrud deserunt veniam ea dolore. Amet aute cupidatat sint reprehenderit fugiat est id aliqua.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="section owl-carousel-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center mb-1">
+                    <h2>TECHNICAL SKILLS</h2>
+                </div>
+                <div class="owl-carousel owl-theme">
+                    <div class="text-center">
+                        <img class="img-fluid" src="images/icons/html5.png" alt="HTML5 Logo">
+                        <h4>HTML5</h4>
+                    </div>
+                    <div class="text-center">
+                        <img class="img-fluid" src="images/icons/css3.png" alt="CSS3 Logo">
+                        <h4>CSS3</h4>
+                    </div>
+                    <div class="text-center">
+                        <img class="img-fluid" src="images/icons/javascript.png" alt="JavaScript Logo">
+                        <h4>JavaScript</h4>
+                    </div>
+                    <div class="text-center">
+                        <img class="img-fluid" src="images/icons/bootstrap.png" alt="Bootstrap Logo">
+                        <h4>Bootstrap 4</h4>
+                    </div>
+                    <div class="text-center">
+                        <img class="img-fluid" src="images/icons/sass.png" alt="SCSS/SASS Logo">
+                        <h4>SCSS</h4>
+                    </div>
+                    <div class="text-center">
+                        <img class="img-fluid" src="images/icons/bash.png" alt="Console Image">
+                        <h4>Bash Shell Scripting</h4>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div>
-                <h2>Sources:</h2>
-                <ul>
-                    <!-- <li><a href="https://brew.sh" target="_blank">To install Homebrew</a></li>
-                    <li><a href="https://stedolan.github.io/jq/download" target="_blank">To download jq command line JSON
-                            processor</a></li>
-                    <li><a href="https://itnext.io/upgrading-bash-on-macos-7138bd1066ba" target="_blank">How to upgrade Bash
-                            Shell on macOS</a></li>
-                    <li><a href="https://chocolatey.org/install" target="_blank">To install chocolatey package manager</a>
-                    </li>
-                    <li><a href="https://learn.adafruit.com/an-introduction-to-collaborating-with-version-control/windows" target="_blank">Install
-                            Git Bash tutorial</a></li>
-                    <li><a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/" target="_blank">How to Install and Use the Linux Bash Shell on Windows 10</a></li>
-                    <li><a href="https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/" target="_blank">How to run Command Prompt as admin</a></li> 
-                    <li><a href="https://git-scm.com/downloads" target="_blank">Git Download</a></li> -->
-                    <li><a href="https://iancoleman.io/exploring-the-cia-world-factbook" target="_blank">CIA world
-                            factbook</a></li>
-                    <li><a href="https://exchangeratesapi.io" target="_blank">Foreign exchange rates API</a></li>
-                    <li><a href="https://restcountries.eu" target="_blank">Rest Countries</a></li>
-                </ul>
+    <div id="portfolio" style="padding: 75px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="heading text-center w-100 mb-4">
+                    <h2>PORTFOLIO</h2>
+                </div>
+                
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="images/portfolio/country-helper.jpg" class="card-img-top" alt="Country Helper">
+                        <div class="card-body">
+                            <h4 class="card-title">Country Helper</h4>
+                            <p class="card-text">An interactive Bash shell script that retrieves information about any country in the world and provides a currency calculator that converts between 33 different world currencies.</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="btn-group">
+                                <a href="https://github.com/philipng88/CountryHelper" target="_blank" class="btn btn-primary github-link"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="/CountryHelper.sh" class="btn btn-secondary" download><i class="fas fa-download"> Download</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/portfolio/omnifood.jpg" class="card-img-top" alt="Omnifood">
+                        <div class="card-body">
+                            <h4 class="card-title">Omnifood</h4>
+                            <p class="card-text">A responsive food-delivery website built with HTML, SCSS, and jQuery. Features scroll-navigation and animations.</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="btn-group">
+                                <a href="https://github.com/philipng88/Omnifood" class="btn btn-primary github-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://philipng88.github.io/Omnifood" class="btn btn-secondary website-link" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/portfolio/dev-camp-fries.jpg" class="card-img-top" alt="DevCamp Fries">
+                        <div class="card-body">
+                            <h4 class="card-title">DevCamp Fries</h4>
+                            <p class="card-text">A multi-page, responsive restaurant website that highlights front-end fundamentals such as HTML5, CSS3, Flexbox, and CSS Grid. Includes custom forms, animations, and an embedded map.</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="btn-group">
+                                <a href="https://github.com/philipng88/DevCampFries" class="btn btn-primary github-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://philipng88.github.io/DevCampFries" class="btn btn-secondary website-link" target="_blank"><i class="fas fa-globe"></i> Website</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
-    <div class="mobile-content">
-        <div class="error-text">
-            <h1><i class="fas fa-exclamation-triangle" id="warning"></i>Switch to a laptop or desktop to view this site's content. If you are already using a laptop or desktop,
-                increase your browser window size</h1>
+
+    <div class="footer">
+        <div class="col text-center">
+            <a href="https://github.com/philipng88" target="_blank"><i class="fab fa-2x fa-github mb-2"></i></a>
+            <a href="https://linkedin.com/in/philipng1" target="_blank"><i class="fab fa-2x fa-linkedin-in mb-2 ml-2"></i></a>
+            <p class="lead m-0"><i class="far fa-copyright"></i> Copyright Philip Ng 2019</p>
         </div>
-        <img src="tbot.png">
     </div>
-    <!-- <script>
-        window.onscroll = function() {myFunction()};
 
-        function myFunction() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
-    }
-    </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="vendors/js/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
 </body>
-
 </html>

@@ -1,0 +1,69 @@
+.navbar-toggler {
+    border: none;
+    background: transparent;
+
+    .icon-bar {
+        width: 22px;
+        height: 2px;
+        background-color: #fff;
+        display: block;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        margin-top: 4px;
+    }
+
+    .top-bar {
+        transform: translate(3px) rotate(45deg);
+        -webkit-transform: translate(3px) rotate(45deg);
+        -moz-transform: translate(3px) rotate(45deg);
+        -ms-transform: translate(3px) rotate(45deg);
+        -o-transform: translate(3px) rotate(45deg);
+        transform-origin: 10% 10%;
+        -webkit-transform-origin: 10% 10%;
+        -moz-transform-origin: 10% 10%;
+        -ms-transform-origin: 10% 10%;
+        -o-transform-origin: 10% 10%;
+    }
+
+    .middle-bar {
+        opacity: 0;
+    }
+
+    .bottom-bar {
+        transform: translate(3px) rotate(-45deg);
+        -webkit-transform: translate(3px) rotate(-45deg);
+        -moz-transform: translate(3px) rotate(-45deg);
+        -ms-transform: translate(3px) rotate(-45deg);
+        -o-transform: translate(3px) rotate(-45deg);
+        transform-origin: 10% 90%;
+        -webkit-transform-origin: 10% 90%;
+        -moz-transform-origin: 10% 90%;
+        -ms-transform-origin: 10% 90%;
+        -o-transform-origin: 10% 90%;
+    }
+}
+
+.navbar-toggler.collapsed {
+    .top-bar {
+        transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+
+    .middle-bar {
+        opacity: 1;
+    }
+
+    .bottom-bar {
+        transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+    }
+}
